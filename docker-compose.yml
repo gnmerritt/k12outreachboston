@@ -1,8 +1,8 @@
-version: '2'  
-services:  
+version: '2'
+services:
   nginx:
-    image: nginx:latest
-    container_name: ng01
+    image: nginx:1.13.8
+    container_name: nginx
     ports:
       - "8000:8000"
     volumes:
@@ -10,10 +10,11 @@ services:
       - ./config/nginx:/etc/nginx/conf.d
     depends_on:
       - web
+
   web:
     build: .
-    container_name: dg01
-    command: bash -c "python manage.py makemigrations && python manage.py migrate && gunicorn mydjango.wsgi -b 0.0.0.0:8000"
+    container_name: django
+    command: ./wait-for-it.sh db:5432 -- ./src/start.sh
     depends_on:
       - db
     volumes:
@@ -22,6 +23,5 @@ services:
       - "8000"
 
   db:
-    image: postgres:latest
-    container_name: ps01
-
+    image: postgres:10.1
+    container_name: pg
