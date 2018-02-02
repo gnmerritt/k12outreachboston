@@ -12,5 +12,5 @@ ADD /src /src
 VOLUME /src
 
 RUN mkdir /static
-RUN python /src/manage.py collectstatic -v 2 --noinput
+RUN python /src/manage.py collectstatic --noinput
 VOLUME /static
