@@ -9,7 +9,6 @@ ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/8ed92e8cab83cfed76ff
 RUN chmod a+x ./wait-for-it.sh
 
 ADD /src /src
-VOLUME /src
 
 RUN mkdir /static
 RUN python /src/manage.py collectstatic --noinput
