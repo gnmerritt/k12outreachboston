@@ -4,4 +4,5 @@ set -e
 cd "$(dirname "$0")"
 
 echo "Running setup script"
+
 python manage.py loaddata users.json
