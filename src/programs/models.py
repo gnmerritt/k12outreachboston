@@ -3,9 +3,9 @@ from django.db import models
 
 class Contact(models.Model):
     """A person we can get in touch with about program(s)"""
-    name = models.CharField(max_length=100, blank=True)
+    name = models.CharField(max_length=200, blank=True)
     email = models.CharField(max_length=100, blank=True)
-    phone = models.CharField(max_length=20, blank=True)
+    phone = models.CharField(max_length=40, blank=True)
     address = models.TextField(blank=True)
 
     def __str__(self):
@@ -34,13 +34,13 @@ class Program(models.Model):
     date = models.CharField(max_length=100, blank=True)
     time = models.CharField(max_length=100, blank=True)
 
-    volunteer_app = models.CharField(max_length=100, blank=True)
+    volunteer_app = models.CharField(max_length=200, blank=True)
     volunteer_app_deadline = models.CharField(max_length=100, blank=True)
     volunteer_time = models.CharField(max_length=100, blank=True)
     volunteer_exp = models.CharField(max_length=100, blank=True)
 
-    student_app = models.CharField(max_length=100, blank=True)
-    student_app_deadline = models.CharField(max_length=100, blank=True)
+    student_app = models.CharField(max_length=400, blank=True)
+    student_app_deadline = models.CharField(max_length=200, blank=True)
 
     nomination = models.CharField(max_length=100, blank=True)
     nomination_deadline = models.CharField(max_length=100, blank=True)
