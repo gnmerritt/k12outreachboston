@@ -17,7 +17,10 @@ static_dir = os.environ.get('STATIC_ROOT', None)
 if static_dir is not None:
     STATIC_ROOT = static_dir
 
-MIDDLEWARE.remove('querycount.middleware.QueryCountMiddleware')  # noqa F405
+try:
+    MIDDLEWARE.remove('querycount.middleware.QueryCountMiddleware')  # noqa F405
+except ValueError:
+    pass
 
 CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = True
