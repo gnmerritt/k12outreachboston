@@ -2,7 +2,7 @@
 set -e
 cd "$(dirname "$0")"
 
-HOST_IP=`ifconfig eth0 | awk '/t addr:/{gsub(/.*:/,"",$2);print$2}'`
+HOST_IP=`/sbin/ifconfig eth0 | awk '/t addr:/{gsub(/.*:/,"",$2);print$2}'`
 
 source PROD_ENV.sh
 
