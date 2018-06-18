@@ -11,8 +11,8 @@ class ContactAdmin(admin.ModelAdmin):
 
 @admin.register(Organization)
 class OrganizationAdmin(admin.ModelAdmin):
-    list_display = ('name', 'site')
-    search_fields = ['name', 'site']
+    list_display = ('name', )
+    search_fields = ['name']
 
 
 @admin.register(Program)

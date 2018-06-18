@@ -15,16 +15,16 @@ class Contact(models.Model):
 class Organization(models.Model):
     """Organizations sponsor programs, e.g. Harvard or BU"""
     name = models.CharField(max_length=200, unique=True)
-    site = models.CharField(max_length=100)
 
     def __str__(self):
-        return "{} ({})".format(self.name, self.site)
+        return self.name
 
 
 class Program(models.Model):
     name = models.CharField(max_length=200)
     organization = models.ForeignKey(Organization, on_delete=models.CASCADE)
     description = models.TextField()
+    site = models.CharField(max_length=200, blank=True)
 
     age_group = models.CharField(max_length=40)
     topic = models.CharField(max_length=50, blank=True)
@@ -37,6 +37,7 @@ class Program(models.Model):
     volunteer_app = models.CharField(max_length=50, blank=True)
     volunteer_app_deadline = models.CharField(max_length=50, blank=True)
     volunteer_time = models.CharField(max_length=100, blank=True)
+    volunteer_exp = models.CharField(max_length=100, blank=True)
 
     student_app = models.CharField(max_length=50, blank=True)
     student_app_deadline = models.CharField(max_length=50, blank=True)
