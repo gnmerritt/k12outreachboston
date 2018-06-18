@@ -25,7 +25,7 @@ SECRET_KEY = 'hx&0*)04+3o*2cyr0zn$8*+u8ku7uh6p5om&+8b7tj7lzx$q!x'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['web']
+ALLOWED_HOSTS = ['web', 'localhost']
 
 # Application definition
 
@@ -77,8 +77,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
+        'USER': 'outreach',
+        'HOST': 'localhost',
+        'PASSWORD': 'outreach2018',  # for dev only
         'PORT': 5432,
     }
 }
