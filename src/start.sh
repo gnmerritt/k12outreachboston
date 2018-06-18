@@ -4,6 +4,7 @@ cd "$(dirname "$0")"
 
 HOST_IP=`/sbin/ifconfig eth0 | awk '/t addr:/{gsub(/.*:/,"",$2);print$2}'`
 
+source venv/bin/activate
 source PROD_ENV.sh
 
 python manage.py --settings=outreach.prod_settings migrate
