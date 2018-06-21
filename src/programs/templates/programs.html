@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+Hello, programs page
+
+<ul>
+    {% for program in programs %}
+        <li>{{ program.name }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

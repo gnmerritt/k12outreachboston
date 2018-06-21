@@ -1,5 +1,14 @@
-from django.http import HttpResponse
+from django.views.generic import DetailView, ListView
+
+from .models import Program
 
 
-def index(req):
-    return HttpResponse("Hello program index page")
+class ProgramList(ListView):
+    model = Program
+    template_name = "programs.html"
+    context_object_name = 'programs'
+
+
+class Program(DetailView):
+    model = Program
+    template_name = "program.html"
