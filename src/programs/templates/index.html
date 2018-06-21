@@ -2,6 +2,49 @@
 
 {% block content %}
 
-Hello, index template
+<p>Block of text about what the site is for</p>
+
+<div class="row">
+  <div class="col-sm">
+    <h2>Find a program</h2>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm">
+    <form class="form">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="query" class="sr-only">Search for a program</label>
+        <input type="text" class="form-control" id="query" placeholder="keyword search">
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm">
+    <h2>Programs by topic</h2>
+  </div>
+  <div class="col-sm">
+    <ul>
+      {% for t in view.topics %}
+        <li>{{ t }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm">
+    <h2>Programs by age group</h2>
+  </div>
+  <div class="col-sm">
+    <ul>
+      {% for t in view.age_groups %}
+        <li>{{ t }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
 
 {% endblock %}

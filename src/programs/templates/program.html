@@ -18,8 +18,6 @@
   <p>{{ object.description }}</p>
   {% if object.donations_accepted %}
     <p>Donations accepted at this link: <a href="{{ object.donations_link }}">{{ object.organization.name }}</a></p>
-  {% else %}
-    <p>Donations not accepted at this time</p>
   {% endif %}
 </div>
 
