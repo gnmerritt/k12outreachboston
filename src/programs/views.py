@@ -3,16 +3,19 @@ from django.views.generic import TemplateView, DetailView, ListView
 from .models import Program
 
 
+def unique(l, count):
+    s = set(l)
+    return list(s)[:count]
+
+
 class Index(TemplateView):
     template_name = "index.html"
 
     def topics(self):
-        return ['STEM', 'Science', 'Engineering']  # TODO
-        return Program.objects.only('topic').all()
+        return unique(Program.objects.all().values_list('topic', flat=True)[:], 6)
 
     def age_groups(self):
-        return ['2nd grade', 'third grade', '5-8th grades']  # TODO
-        return Program.objects.only('age_group').all()
+        return unique(Program.objects.all().values_list('age_group', flat=True)[:], 6)
 
 
 class ProgramList(ListView):
@@ -21,6 +24,6 @@ class ProgramList(ListView):
     context_object_name = 'programs'
 
 
-class Program(DetailView):
+class ProgramView(DetailView):
     model = Program
     template_name = "program.html"
