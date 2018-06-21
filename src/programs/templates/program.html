@@ -1,9 +1,89 @@
 {% extends 'base.html' %}
+{% load program_extras %}
 
 {% block content %}
 
-Hello, program detail page
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Programs</a></li>
+    <li class="breadcrumb-item"><a href="">{{ object.topic }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ object.name }}</li>
+  </ol>
+</nav>
 
-<h1>{{ object.name }}</h1>
+<div class="jumbotron">
+  <h1>{{ object.name }}</h1>
+  <h2>{{ object.organization.name }}</h2>
+  <hr>
+  <p>{{ object.description }}</p>
+  {% if object.donations_accepted %}
+    <p>Donations accepted at this link: <a href="{{ object.donations_link }}">{{ object.organization.name }}</a></p>
+  {% else %}
+    <p>Donations not accepted at this time</p>
+  {% endif %}
+</div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      {% card "Cost" object.cost %}
+    </div>
+    <div class="col-sm">
+      {% card "Age group" object.age_group %}
+    </div>
+    <div class="col-sm">
+      {% card object.date object.time %}
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-sm">
+      {% card "Location" object.location %}
+    </div>
+    <div class="col-sm">
+      {% card "Program Site" object.site link=True %}
+    </div>
+    <div class="col-sm">
+      {% card "Contact" object.contact.name %}
+    </div>
+  </div>
+</div>
+
+<h3>Application info</h3>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      {% if object.student_app %}
+        {% card "Student application" object.student_app t2=object.student_app_deadline %}
+      {% else %}
+        <p>No student application needed at this time</p>
+      {% endif %}
+    </div>
+    {% if object.nomination %}
+      <div class="col-sm">
+        {% card "Student nomination" object.nomination t2=object.nomination_deadline %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if object.scholarship_app %}
+  <div class="row">
+    <div class="col-sm">
+      {% card "Scholarships" object.scholarship_app t2=object.scholarship_app_deadline %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if object.volunteer_app %}
+  <div class="row">
+    <div class="col-sm">
+      {% card "Volunteer application" object.volunteer_app t2=object.volunteer_app_deadline link=True %}
+    </div>
+  </div>
+  {% endif %}
+</div>
 
 {% endblock %}
