@@ -1,3 +1,4 @@
+from typing import Optional
 from django.views.generic import TemplateView, DetailView, ListView
 
 from .models import Program
@@ -28,22 +29,24 @@ class ProgramList(ListView):
 
 
 class SearchList(ProgramList):
-    @property
-    def topic(self):
-        return self.request.GET.get('topic', None)
+    def arg(self, arg: str) -> Optional[str]:
+        if self.request.method == 'GET':
+            return self.request.GET.get(arg, None)
 
     @property
-    def age_group(self):
-        return self.request.GET.get('age', None)
+    def topic(self) -> Optional[str]:
+        return self.arg('topic')
+
+    @property
+    def age_group(self) -> Optional[str]:
+        return self.arg('age')
 
     def get_queryset(self):
         query = Program.objects
         # TODO: probably make this generic via a whitelist & kwargs?
         if self.topic:
-            print("added topic filter")
             query = query.filter(topic=self.topic)
         if self.age_group:
-            print("added age_group filter")
             query = query.filter(age_group=self.age_group)
         return query.all()
 
