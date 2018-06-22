@@ -17,6 +17,9 @@ class Index(TemplateView):
     def age_groups(self):
         return unique(Program.objects.all().values_list('age_group', flat=True)[:], 6)
 
+    def free_programs(self):
+        return Program.objects.filter(cost='Free').all().values_list('name', 'id')[:6]
+
 
 class ProgramList(ListView):
     model = Program
