@@ -1,13 +1,61 @@
 {% extends 'base.html' %}
+{% load program_extras %}
 
 {% block content %}
 
-Hello, programs page
+<div class="row">
+  <div class="col-sm">
+    {# TODO: put this somewhere we can reuse it #}
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Keyword</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </div>
 
-<ul>
-    {% for program in programs %}
-        <li>{{ program.name }}</li>
-    {% endfor %}
-</ul>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Topic</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="inputGroup-sizing-default">Age group</span>
+      </div>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+    </div>
+  </div>
+</div>
+
+<hr>
+
+{% for program in programs %}
+  <div class="row">
+    <div class="col-sm">
+      <div><a href="/program/{{ program.id }}">{{ program.name }}</a></div>
+      <div>Run by {{ program.organization.name }}</div>
+    </div>
+
+    <div class="col-sm">
+      {% card "Topic" program.topic %}
+    </div>
+
+    {% if program.cost %}
+      <div class="col-sm">
+        {% card "Cost" program.cost %}
+      </div>
+    {% endif %}
+
+    {% if program.date %}
+      <div class="col-sm">
+        {% card "Date/time" program.date t2=program.time %}
+      </div>
+    {% endif %}
+  </div>
+
+  <hr>
+{% endfor %}
 
 {% endblock %}
