@@ -1,5 +1,6 @@
 from typing import Optional
 from django.views.generic import TemplateView, DetailView, ListView
+from django.contrib.postgres.search import SearchVector
 
 from .models import Program
 
@@ -29,6 +30,10 @@ class ProgramList(ListView):
 
 
 class SearchList(ProgramList):
+    SEARCHABLE = [
+        'name', 'topic', 'date', 'description', 'location', 'age_group', 'cost'
+    ]
+
     def arg(self, arg: str) -> Optional[str]:
         if self.request.method == 'GET':
             return self.request.GET.get(arg, None)
@@ -41,9 +46,16 @@ class SearchList(ProgramList):
     def age_group(self) -> Optional[str]:
         return self.arg('age')
 
+    @property
+    def search(self) -> Optional[str]:
+        return self.arg('q')
+
     def get_queryset(self):
         query = Program.objects
         # TODO: probably make this generic via a whitelist & kwargs?
+        if self.search:
+            query = query.annotate(search=SearchVector(*self.SEARCHABLE)) \
+                .filter(search=self.search)
         if self.topic:
             query = query.filter(topic=self.topic)
         if self.age_group:

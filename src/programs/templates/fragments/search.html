@@ -1,0 +1,42 @@
+<form action="/search" method="get">
+  <div class="row">
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Keyword search</span>
+        </div>
+        <input type="text" name="q" class="form-control" aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          value="{{ view.search }}">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Topic</span>
+        </div>
+        <input type="text" name="topic" class="form-control" aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          value="{{ view.topic }}">
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Age group</span>
+        </div>
+        <input type="text" name="age" class="form-control" aria-label="Default"
+          aria-describedby="inputGroup-sizing-default"
+          value="{{ view.age_group }}">
+      </div>
+    </div>
+
+    <div class="col-sm">
+      <input type="submit" value="Search!">
+    </div>
+  </div>
+</form>
