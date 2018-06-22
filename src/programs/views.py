@@ -57,9 +57,9 @@ class SearchList(ProgramList):
             query = query.annotate(search=SearchVector(*self.SEARCHABLE)) \
                 .filter(search=self.search)
         if self.topic:
-            query = query.filter(topic=self.topic)
+            query = query.filter(topic__icontains=self.topic)
         if self.age_group:
-            query = query.filter(age_group=self.age_group)
+            query = query.filter(age_group__icontains=self.age_group)
         return query.all()
 
 

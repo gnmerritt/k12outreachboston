@@ -1,18 +1,22 @@
 <form action="/search" method="get">
   <div class="row">
-    <div class="col-sm">
+    <div class="col-md">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">Keyword search</span>
+          <span class="input-group-text" id="inputGroup-sizing-default">Program search</span>
         </div>
         <input type="text" name="q" class="form-control" aria-label="Default"
           aria-describedby="inputGroup-sizing-default"
-          value="{{ view.search }}">
+          value="{{ view.search | default_if_none:"" }}">
       </div>
+    </div>
+    <div class="col-">
+      <input type="submit" value="Search!">
     </div>
   </div>
 
   <div class="row">
+    {% if view.topic %}
     <div class="col-sm">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -23,7 +27,9 @@
           value="{{ view.topic }}">
       </div>
     </div>
+    {% endif %}
 
+    {% if view.age_group %}
     <div class="col-sm">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
@@ -34,9 +40,6 @@
           value="{{ view.age_group }}">
       </div>
     </div>
-
-    <div class="col-sm">
-      <input type="submit" value="Search!">
-    </div>
+    {% endif %}
   </div>
 </form>
