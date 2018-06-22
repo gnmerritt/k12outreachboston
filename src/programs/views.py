@@ -27,6 +27,27 @@ class ProgramList(ListView):
     context_object_name = 'programs'
 
 
+class SearchList(ProgramList):
+    @property
+    def topic(self):
+        return self.request.GET.get('topic', None)
+
+    @property
+    def age_group(self):
+        return self.request.GET.get('age', None)
+
+    def get_queryset(self):
+        query = Program.objects
+        # TODO: probably make this generic via a whitelist & kwargs?
+        if self.topic:
+            print("added topic filter")
+            query = query.filter(topic=self.topic)
+        if self.age_group:
+            print("added age_group filter")
+            query = query.filter(age_group=self.age_group)
+        return query.all()
+
+
 class ProgramView(DetailView):
     model = Program
     template_name = "program.html"
