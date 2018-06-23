@@ -34,8 +34,8 @@ class Program(models.Model):
     date = models.CharField(max_length=100, blank=True)
     time = models.CharField(max_length=100, blank=True)
 
-    start = models.DateField(null=True)
-    end = models.DateField(null=True)
+    start = models.DateField(null=True, blank=True)
+    end = models.DateField(null=True, blank=True)
 
     volunteer_app = models.CharField(max_length=200, blank=True)
     volunteer_app_deadline = models.CharField(max_length=100, blank=True)
