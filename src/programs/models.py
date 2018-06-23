@@ -29,7 +29,7 @@ class Program(models.Model):
     age_group = models.CharField(max_length=100)
     topic = models.CharField(max_length=100, blank=True)
     site = models.CharField(max_length=200)
-    location = models.CharField(max_length=100)
+    location = models.CharField(max_length=100, blank=True)
 
     date = models.CharField(max_length=100, blank=True)
     time = models.CharField(max_length=100, blank=True)
