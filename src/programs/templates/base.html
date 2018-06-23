@@ -1,10 +1,6 @@
 {% load static %}
 
 {% load bootstrap4 %}
-{% bootstrap_css %}
-{% bootstrap_javascript jquery='full' %}
-{# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>{% block title %}K-12 Outreach Programs in Boston{% endblock %}</title>
+
+    {% bootstrap_css %}
   </head>
 
 <body role="document">
@@ -51,6 +49,8 @@
 
   {# matomo image tracking beacon (no javascript or cookies) #}
   <img src="https://ab.gnmerritt.net/piwik.php?idsite=2&amp;rec=1" style="border:0" alt="" />
+
+  {% bootstrap_javascript jquery='full' %}
 
   {% block scripts %}{% endblock %}
 </body>
