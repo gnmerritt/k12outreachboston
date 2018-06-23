@@ -3,6 +3,21 @@
 
 {% block content %}
 
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/programs">Programs</a></li>
+    {% if view.topic %}
+      <li class="breadcrumb-item active">{{ view.topic }}</li>
+    {% endif %}
+    {% if view.age_group %}
+      <li class="breadcrumb-item active">{{ view.age_group }}</li>
+    {% endif %}
+    {% if view.search %}
+      <li class="breadcrumb-item active" aria-current="page">{{ view.search }}</li>
+    {% endif %}
+  </ol>
+</nav>
+
 {% include "fragments/search.html" %}
 
 <hr>
