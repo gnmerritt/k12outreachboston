@@ -59,4 +59,4 @@ class Program(models.Model):
     donations_link = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return self.name
+        return f"{self.id} - {self.name}"
