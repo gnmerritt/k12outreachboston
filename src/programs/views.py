@@ -14,7 +14,8 @@ class Index(TemplateView):
     template_name = "index.html"
 
     def topics(self):
-        return unique(Program.objects.all().values_list('topic', flat=True)[:], 6)
+        topics = Program.objects.all().values_list('topic', flat=True)
+        return unique([s.strip() for t in topics for s in t.split(',')], 6)
 
     def age_groups(self):
         return unique(Program.objects.all().values_list('age_group', flat=True)[:], 6)
