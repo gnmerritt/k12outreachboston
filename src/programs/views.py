@@ -1,3 +1,4 @@
+import re
 from typing import Optional
 from django.views.generic import TemplateView, DetailView, ListView
 from django.contrib.postgres.search import SearchVector
@@ -55,8 +56,9 @@ class SearchList(ProgramList):
         query = Program.objects
         # TODO: probably make this generic via a whitelist & kwargs?
         if self.search:
+            sanitized = re.sub(r'[_;.,-]', ' ', self.search)
             query = query.annotate(search=SearchVector(*self.SEARCHABLE)) \
-                .filter(search=self.search)
+                .filter(search=sanitized)
         if self.topic:
             query = query.filter(topic__icontains=self.topic)
         if self.age_group:
