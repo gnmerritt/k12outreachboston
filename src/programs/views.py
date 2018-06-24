@@ -1,5 +1,6 @@
 import re
 from typing import Optional
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import TemplateView, DetailView, ListView
 from django.contrib.postgres.search import SearchVector
 
@@ -22,7 +23,7 @@ class Index(TemplateView):
         return unique(Program.objects.all().values_list('age_group', flat=True)[:], 6)
 
     def free_programs(self):
-        return Program.objects.filter(cost='Free').all().values_list('name', 'id')[:6]
+        return Program.objects.filter(cost='Free').all()[:6]
 
 
 class ProgramList(ListView):
@@ -64,6 +65,12 @@ class SearchList(ProgramList):
         if self.age_group:
             query = query.filter(age_group__icontains=self.age_group)
         return query.all()
+
+
+def program_redirector(req, *args, **kwargs):
+    pk = kwargs.get('pk', -1)
+    obj = get_object_or_404(Program, pk=pk)
+    return redirect(obj, permanent=True)
 
 
 class ProgramView(DetailView):

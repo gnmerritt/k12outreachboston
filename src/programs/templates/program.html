@@ -5,9 +5,9 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/programs">Programs</a></li>
-    <li class="breadcrumb-item"><a href="/search?topic={{ object.topic | urlencode }}">{{ object.topic }}</a></li>
-    <li class="breadcrumb-item"><a href="/search?age={{ object.age_group | urlencode }}">{{ object.age_group }}</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'programs' %}">Programs</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'search' %}?topic={{ object.topic | urlencode }}">{{ object.topic }}</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'search' %}?age={{ object.age_group | urlencode }}">{{ object.age_group }}</a></li>
     <li class="breadcrumb-item active" aria-current="page">{{ object.name }}</li>
   </ol>
 </nav>

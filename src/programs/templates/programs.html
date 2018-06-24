@@ -5,7 +5,7 @@
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/programs">Programs</a></li>
+    <li class="breadcrumb-item"><a href="{% url 'programs' %}">Programs</a></li>
     {% if view.topic %}
       <li class="breadcrumb-item active">{{ view.topic }}</li>
     {% endif %}
@@ -25,7 +25,7 @@
 {% for program in programs %}
   <div class="row">
     <div class="col-sm">
-      <div><a href="/program/{{ program.id }}">{{ program.name }}</a></div>
+      <div><a href="{{ program.get_absolute_url }}">{{ program.name }}</a></div>
       <div>Run by {{ program.organization.name }}</div>
     </div>
 

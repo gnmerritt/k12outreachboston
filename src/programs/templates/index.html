@@ -19,7 +19,7 @@
   <div class="col-sm">
     <ul>
       {% for t in view.free_programs %}
-        <li><a href="/program/{{ t.1 }}">{{ t.0 }}</a></li>
+        <li><a href="{{ t.get_absolute_url }}">{{ t.name }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -32,7 +32,7 @@
   <div class="col-sm">
     <ul>
       {% for t in view.topics %}
-        <li><a href="/search?topic={{ t | urlencode }}">{{ t }}</a></li>
+        <li><a href="{% url 'search' %}?topic={{ t | urlencode }}">{{ t }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -45,7 +45,7 @@
   <div class="col-sm">
     <ul>
       {% for t in view.age_groups %}
-        <li><a href="/search?age={{ t | urlencode }}">{{ t }}</a></li>
+        <li><a href="{% url 'search' %}?age={{ t | urlencode }}">{{ t }}</a></li>
       {% endfor %}
     </ul>
   </div>

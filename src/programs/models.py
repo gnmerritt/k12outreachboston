@@ -1,3 +1,4 @@
+import re
 from django.db import models
 
 
@@ -57,6 +58,11 @@ class Program(models.Model):
 
     donations_accepted = models.BooleanField()
     donations_link = models.CharField(max_length=200, blank=True)
+
+    def get_absolute_url(self) -> str:
+        dashes = self.name.strip().lower().replace(' ', '-')
+        chars = re.sub(r'[();._]', '', dashes)
+        return f"/program/{chars}-p{self.id}"
 
     def __str__(self):
         return f"{self.id} - {self.name}"
