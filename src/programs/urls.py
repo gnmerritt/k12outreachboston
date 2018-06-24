@@ -1,8 +1,12 @@
 from django.urls import path, re_path
+from django.contrib.sitemaps.views import sitemap
 
 from . import views
+from .sitemaps import maps
 
 urlpatterns = [
+    path('sitemap.xml', sitemap, {'sitemaps': maps},
+         name='django.contrib.sitemaps.views.sitemap'),
     path('programs/', views.ProgramList.as_view(), name='programs'),
     path('program/<int:pk>/', views.program_redirector),
     re_path(r'^program\/(\w+\-)+p(?P<pk>\d+)\/?$',
