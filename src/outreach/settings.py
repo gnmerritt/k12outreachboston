@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'django.contrib.postgres',
+    'email_obfuscator',
     'bootstrap4',
 ]
 
