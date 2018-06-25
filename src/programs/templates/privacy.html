@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load email_obfuscator %}
+
+{% block content %}
+
+<h2>Contact</h2>
+
+<p>Please feel free to drop us an email at {{ 'k12outreachboston@gmail.com' | obfuscate_mailto }} or
+open a <a href="https://github.com/gnmerritt/k12outreachboston/issues">GitHub issue</a>
+if you run across any information you believe is out of date, incorrect or if you'd
+like something to be removed from the site.</p>
+
+<p>Pull requests also welcome!</p>
+
+<h2>Terms of Use</h2>
+
+<p>THE SITE, <a href="https://k12boston.sciencefor2020.org">https://k12boston.sciencefor2020.org</a>,
+IS PROVIDED "AS IS", WITHOUT WARRANTY
+OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SITE OR THE USE OR OTHER DEALINGS IN THE SITE.
+</p>
+
+<h2>Privacy Policy</h2>
+
+<p>Your privacy is important to us. It is Science For 2020's policy to respect your
+privacy regarding any information we may collect from you across our website,
+https://k12boston.sciencefor2020.org, and other sites we own and operate.</p>
+
+<p>We do not and will not ever collect any personally identifiable information
+from you. We believe that user data is a liability rather than an asset, and so
+we avoid acquiring it. This means that this site does not set tracking cookies
+or work with any third-party advertisers.</p>
+
+<p>We don’t share any personally identifying information publicly or with
+third-parties, except when required to by law. </p>
+
+<p>Our website may link to external sites that are not operated by us. Please be
+aware that we have no control over the content and practices of these sites,
+and cannot accept responsibility or liability for their respective privacy
+policies.</p>
+
+<p>Your continued use of our website will be regarded as acceptance of our practices
+around privacy and personal information. If you have any questions about how we
+handle user data and personal information, feel free to contact us.</p>
+
+<p>This policy is effective as of 25 June 2018.</p>
+
+View <a href="https://github.com/gnmerritt/k12outreachboston/commits/master/src/programs/templates/privacy.html">this document's revision history</a>
+
+{% endblock %}

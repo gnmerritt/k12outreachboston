@@ -1,4 +1,5 @@
 from django.urls import path, re_path
+from django.views.generic import TemplateView
 from django.contrib.sitemaps.views import sitemap
 
 from . import views
@@ -12,5 +13,6 @@ urlpatterns = [
     re_path(r'^program\/(\w+\-)+p(?P<pk>\d+)\/?$',
             views.ProgramView.as_view(), name='program'),
     path('search/', views.SearchList.as_view(), name='search'),
+    path('terms', TemplateView.as_view(template_name='privacy.html'), name='privacy'),
     path('', views.Index.as_view(), name='index'),
 ]

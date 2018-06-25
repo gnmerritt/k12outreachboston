@@ -9,7 +9,7 @@ class StaticSitemap(Sitemap):
     priority = 0.2
 
     def items(self):
-        return ['index', 'programs', 'search']  # TODO: TOS
+        return ['index', 'programs', 'search', 'privacy']
 
     def location(self, item):
         return reverse(item)
