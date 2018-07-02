@@ -61,7 +61,7 @@ class Program(models.Model):
 
     def get_absolute_url(self) -> str:
         dashes = self.name.strip().lower().replace(' ', '-')
-        chars = re.sub(r'[();._]', '', dashes)
+        chars = re.sub(r"[();.'\\\/_{}+\]\[=]", '', dashes)
         return f"/program/{chars}-p{self.id}"
 
     def __str__(self):
