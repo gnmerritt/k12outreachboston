@@ -5,7 +5,7 @@ DEBUG = False
 DEBUG_TEMPLATE = False
 
 SECRET_KEY = os.environ['SECRET_KEY']
-ALLOWED_HOSTS = [".sciencefor2020.org",".gnmerritt.net"]
+ALLOWED_HOSTS = [".k12outreachboston.com"]
 
 INSTALLED_APPS += [  # noqa F405
     'gunicorn',
